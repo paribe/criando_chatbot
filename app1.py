@@ -4,7 +4,7 @@ from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 
 # Definir a chave da API
-api_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+api_key = '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'
 os.environ['GROQ_API_KEY'] = api_key
 
 # Inicializar o modelo de IA
