@@ -28,4 +28,4 @@ while True:
   mensagens.append(('assistant', resposta))
   print(f'Bot: {resposta}')
 
-print('\nMuito obrigado por utilizar o AsimoBot!')
+print('\nMuito obrigado por utilizar o Bot!')
