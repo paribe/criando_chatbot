@@ -17,7 +17,7 @@ def resposta_do_bot(lista_mensagens):
   chain = template | chat
   return chain.invoke({}).content
 
-print('Bem-vindo ao ChatBot da Asimo! (Digite x se você quiser sair!)\n')
+print('Bem-vindo ao ChatBot do Davi! (Digite x se você quiser sair!)\n')
 mensagens = []
 while True:
   pergunta = input('Você pode perguntar ?: ')
