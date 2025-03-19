@@ -11,7 +11,7 @@ chat = ChatGroq(model='llama-3.3-70b-versatile')
 
 def resposta_do_bot(lista_mensagens):
   template = ChatPromptTemplate.from_messages(
-      [('system', 'Você é um assistente amigável chamado Asimo')] +
+      [('system', 'Você é um assistente amigável chamado Davi')] +
       lista_mensagens
   )
   chain = template | chat
