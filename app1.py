@@ -1,11 +1,16 @@
 import os
 import streamlit as st
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 
-# Definir a chave da API
-api_key = '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'
-os.environ['GROQ_API_KEY'] = api_key
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
+
+# Verificar se a chave da API foi carregada
+if not os.getenv('GROQ_API_KEY'):
+    st.error("❌ Erro: GROQ_API_KEY não encontrada no arquivo .env")
+    st.stop()
 
 # Inicializar o modelo de IA
 chat = ChatGroq(model='llama-3.3-70b-versatile')
@@ -37,11 +42,13 @@ if pergunta:
     # Atualizar a pergunta atual
     st.session_state.pergunta_atual = pergunta
     
-    # Obter resposta do bot
-    resposta = resposta_do_bot(pergunta)
-    st.session_state.resposta_atual = resposta
-    
-    # Limpar a interface (não necessário, o Streamlit recarrega a página)
+    try:
+        # Obter resposta do bot
+        resposta = resposta_do_bot(pergunta)
+        st.session_state.resposta_atual = resposta
+    except Exception as e:
+        st.error(f"❌ Erro ao obter resposta: {str(e)}")
+        st.session_state.resposta_atual = "Desculpe, ocorreu um erro. Tente novamente."
     
 # Exibir apenas a conversa atual, se existir
 if st.session_state.pergunta_atual:
